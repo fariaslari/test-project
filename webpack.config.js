@@ -10,9 +10,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.css'],
+    extensions: ['.js', '.jsx', '.json', '.png', '.css'],
     alias: {
-       ImgPath: path.resolve(__dirname, 'src/templates/')
+       ImgPath: path.resolve(__dirname, 'src/assets/img')
     }
   },
   module : {
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: 'url-loader?limit=100000&minetype=image/png'
+        loader: 'url-loader'
       },
       {
         test: /\.jpg/,
