@@ -27,7 +27,7 @@ class ProductBag extends Component {
             </div>
           </div>
           <div className="price">
-
+          R$ <b>179</b>,99
           </div>
         </div>
 
@@ -50,7 +50,7 @@ class ProductBag extends Component {
             </div>
           </div>
           <div className="price">
-
+            R$ <b>179</b>,99
           </div>
         </div>
       </div>
