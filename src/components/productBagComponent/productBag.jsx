@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 
 class ProductBag extends Component {
+  onMouseOver(elem){
+		alert(elem);
+	}
   render() {
     return (
       <div className="productBag">
         <div className="title">
-          <img src='/dist/assets/img/bag-icon.png'></img>
+          <img src='/assets/img/bag-icon.png'></img>
           <span>sacola</span>
+          <div className="productCount"><span>22</span></div>
         </div>
 
         <div className="product">
+          <div className="delete">X</div>
           <div className="pic">
             <img src="pic"></img>
           </div>
@@ -33,6 +38,7 @@ class ProductBag extends Component {
 
 
         <div className="product">
+          <div className="delete" onMouseOver={this.onMouseOver}>X</div>
           <div className="pic">
             <img src="pic"></img>
           </div>

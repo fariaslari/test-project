@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
 header {
     display: block;
     background-color: black;
@@ -22,7 +24,6 @@ header {
   }
 
 
-
 .productBag {
   height: 100vh;
   width: 500px;
@@ -34,17 +35,53 @@ header {
   .productBag .title{
     margin: 0 auto;
     width: 140px;
-    padding-top: 60px;
-    padding-bottom: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    height: 50px;
+    position: relative;
   }
 
-    .productBag .title span {
+    .productBag .title>span {
       color: white;
       text-transform: uppercase;
       font-weight: bold;
-      font-family: sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 22px;
       padding-left: 10px;
+      position: absolute;
+      top: 6px;
+    }
+
+    .productBag .title .productCount{
+      margin: 0 auto;
+      width: 140px;
+      margin-top: 60px;
+      margin-bottom: 30px;
+      height: 50px;
+      position: relative;
+    }
+    
+    .productBag .title .productCount{ 
+      margin: 0 auto;
+      width: 15px;
+      line-height: 14px;
+      height: 15px;
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid #ebbd01;
+      background: #ebbd01;
+      top: 30px;
+      left: 18px;
+    }
+
+    .productBag .title .productCount span {
+      color: #1b1a20;
+      text-align: center;
+      font-size: 9px;
+      font-weight: bolder;
+      font-family: 'Open Sans';
+      display: table;
+      margin: 0 auto;
     }
 
   .productBag .product{
@@ -54,6 +91,10 @@ header {
     overflow: hidden;
     padding: 10px;    
     position: relative;
+  }
+
+  .productBag .product:nth-child(n+2) {
+    margin-top: -2px;
   }
 
   .productBag .product .pic{
@@ -75,7 +116,7 @@ header {
     color: white;
     font-size: 14px;
     font-weight: 600;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
 
   .productBag .product .descp .info {
@@ -89,12 +130,30 @@ header {
     width: 100%;
     color: #676769;
     font-size: 13px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 1px 0;
   }
   
   .productBag .product .price{
-    float: right;
     color: #ebbd01;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .productBag .product .delete{
+    color: #000000;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bolder;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+  }
+
+  .productBag .product .delete:hover{
+    color: #ffffff;
+    cursor: pointer;
   }
