@@ -5,6 +5,8 @@ logs
 # Compiled directory and file
 build/
 bundle.js
+dist/assets/
+dist/css/
 
 # Dependency directories
 node_modules/

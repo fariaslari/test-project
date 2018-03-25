@@ -1,68 +1,26 @@
 import React, { Component } from 'react';
 import BagItem from './bagItemComponent/BagItem';
+import BagController, { getBag } from './../common/BagController';
 
 class ProductBag extends Component {
   constructor(props){
     super(props)
     this.total;
     this.installments;
-
-    this.bag = [
-      {
-        "id": 6,
-        "sku": 6090484789343891,
-        "title": "Calção Nike Corinthians",
-        "description": "Goleiro 13/14",
-        "availableSizes": ["GG", "GGG"],
-        "style": "Branco",
-        "price": 49.9,
-        "installments": 5,
-        "currencyId": "BRL",
-        "currencyFormat": "R$",
-        "isFreeShipping": true,
-        "size": "M",
-        "quantity": 2
-      },
-      {
-        "id": 1,
-        "sku": 18644119330491312,
-        "title": "Camisa Nike Corinthians II",
-        "description": "14/15 s/nº",
-        "availableSizes": ["S", "G", "GG", "GGG"],
-        "style": "Preta com listras brancas",
-        "price": 229.9,
-        "installments": 9,
-        "currencyId": "BRL",
-        "currencyFormat": "R$",
-        "isFreeShipping": true,
-        "size": "P",
-        "quantity": 1
-      },
-      {
-        "id": 0,
-        "sku": 8552515751438644,
-        "title": "Camisa Nike Corinthians I",
-        "description": "14/15 s/nº",
-        "availableSizes": ["S", "G", "GG", "GGG"],
-        "style": "Branco com listras pretas",
-        "price": 229.9,
-        "installments": 9,
-        "currencyId": "BRL",
-        "currencyFormat": "R$",
-        "isFreeShipping": true,
-        "size": "G",
-        "quantity": 1
-      }
-    ];
+    
+    this.getBag = getBag.bind(this);
+    this.bag = this.getBag();
   }
-
+  
   buyProducts(){
+    localStorage.removeItem(this.props.bagKey);
+    localStorage.removeItem('bagKey');
     alert("Sua compra foi efetuada com sucesso!");
   }
 
-  getValueFormated(bag){
+  getValueFormated(){
     let value = 0;
-    bag.forEach(element => {
+    this.bag.itens.forEach(element => {
       value+=element.price;
     });
     this.total = { 
@@ -71,8 +29,8 @@ class ProductBag extends Component {
     };
   }
 
-  getInstallmentFormated(bag){
-    let arrInstallments = bag.map(a => a.installments);
+  getInstallmentFormated(){
+    let arrInstallments = this.bag.itens.map(a => a.installments);
     console.log(arrInstallments);
     let number = Math.min.apply(Math, arrInstallments);
     this.installments = {
@@ -94,27 +52,36 @@ class ProductBag extends Component {
         <div className="title">
           <img src='/assets/img/bag-icon.png'></img>
           <span>sacola</span>
-          <div className="productCount"><span>{this.bag.length}</span></div>
+          <div className="productCount"><span>{this.bag.itens.length}</span></div>
         </div>
 
-        {this.bag.map(element => <BagItem content={element} />)} 
+        {this.bag.itens.map(element => <BagItem content={element} />)} 
 
-        <div className="totalizer">
-          <span>subtotal</span>
-          <div className="right">
-          {this.getValueFormated(this.bag)}
-            <span className="value">R$ <b>{this.total.price}</b>,{this.total.decimalPart}</span>
-            {this.getInstallmentFormated(this.bag)}{this.hasInstallment()}
+        {this.bag.itens.length == 0 &&
+          <div className="emptyBag">
+            Sua sacola está vazia
           </div>
-        </div>
+        }
 
-        <div className="buyButton">
-          <button onClick={this.buyProducts}>comprar</button>
-        </div>
+        {this.bag.itens.length > 0 &&
+          <div className="totalizer">
+            <span>subtotal</span>
+            <div className="right">
+            {this.getValueFormated()}
+              <span className="value">R$ <b>{this.total.price}</b>,{this.total.decimalPart}</span>
+              {this.getInstallmentFormated()}{this.hasInstallment()}
+            </div>
+          </div>
+        }
+
+        {this.bag.itens.length > 0 &&
+          <div className="buyButton">
+            <button onClick={this.buyProducts.bind(this)}>comprar</button>
+          </div>
+        }
       </div>
     )
   }
 }
-
 
 export default ProductBag;

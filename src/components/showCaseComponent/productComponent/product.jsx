@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import Utils, { formatPrice } from './../../common/Utils';
+import BagController, { addToBag } from './../../common/BagController';
+import ProductBag from './../../productBagComponent/ProductBag';
 
 class Product extends Component {
   constructor(props){
-    super(props);
-    this.content = formatPrice(this.props.content);
+    super(props)
+    this.state = {visible: false};
+    this.formatPrice = formatPrice.bind(this);
+    this.content = this.formatPrice(this.props.content);
+
+    this.addToBag = addToBag.bind(this);
+  }
+
+  onMouseOver(){
+    this.setState({visible: true})
+  }
+
+  onMouseOut(){
+    this.setState({visible: false})
   }
 
   getInstallmentFormated(value){
@@ -19,13 +34,13 @@ class Product extends Component {
 
   render() {
     return (
-      <div className="product">
-        <div className="addToCart">
+      <div className="product" onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>
+        <div className={"addToBag" + (this.state.visible ? " visible" : '')}>
           <div className="sizeSelector">
-          {this.content.availableSizes.map((size) => <div className="size">{size}</div>)}
+            {this.content.availableSizes.map((size) => <div className="size" onClick={()=>this.addToBag(this.content, size)}>{size}</div>)}
           </div>
         </div>
-        <div className="content">
+        <div className={"content" + (this.state.visible ? " focusOff" : '')}>
           <div className="productImg">
             <img src="https://static.netshoes.com.br/produtos/camisa-corinthians-ii-1718-sn-torcedor-nike-masculina/26/D12-6982-026/D12-6982-026_detalhe1.jpg?resize=326:*" />
           </div>
@@ -43,11 +58,5 @@ class Product extends Component {
   }
 }
 
-
-function formatPrice(obj){
-  obj.intPrice = Math.floor(obj.price);
-  obj.decimalPart = (obj.price - Math.floor(obj.price)).toFixed(2) * 100;
-  return obj;
-}
 
 export default Product;

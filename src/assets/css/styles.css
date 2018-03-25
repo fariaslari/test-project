@@ -24,8 +24,8 @@ header {
   }
 
 .productBag:hover{
-right: 0;
-transition: 1s;
+  right: 0;
+  transition: 1s;
 }
 
 .productBag {
@@ -241,6 +241,14 @@ z-index: 1000;
       cursor: pointer;
     }
 
+  .productBag .emptyBag{
+    font-family: 'Open Sans';
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 60px;
+  }
+
 .showCase{
 padding: 30px;
 }
@@ -253,26 +261,34 @@ padding: 30px;
   position: relative;
 }
 
-.showCase .product .content>*:hover{
-  opacity: 0.5;
-  filter: alpha(opacity=50);
+.showCase .product:hover{
   cursor: pointer;
 }
 
-.showCase .product .addToCart{
+.showCase .product .content.focusOff{
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.showCase .product .addToBag{
   width: 100%;
   height: auto;
   position: absolute;
   top: 65px;
+  display: none;
+  z-index: 2;
 }
 
+.showCase .product .addToBag.visible{
+  display: initial;
+}
 
-.showCase .product .addToCart .sizeSelector{
+.showCase .product .addToBag .sizeSelector{
   width: 100%;
   text-align: center;
 }
 
-.showCase .product .addToCart .sizeSelector .size{
+.showCase .product .addToBag .sizeSelector .size{
   width: 35px;
   height: 35px;
   border: 2px solid #1b1a20;
@@ -286,6 +302,14 @@ padding: 30px;
   line-height: 35px;
   background: #fff;
 }
+
+  .showCase .product .addToBag .sizeSelector .size:hover{
+    background-color: #ebbd01;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    transition: 0.2s;
+  }
 
 .showCase .product .productImg img {
   width: 170px;
