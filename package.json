@@ -1,4 +1,8 @@
 {
+    "name": "test-project",
+    "description": "A React test project",
+    "version": "1.0.0",
+    "author": "Larissa Farias <farias_lari@hotmail.com>",
     "scripts": {
         "dev": "webpack -d --watch",
         "start": "node index.js",
