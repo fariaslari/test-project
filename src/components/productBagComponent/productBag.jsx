@@ -9,12 +9,12 @@ class ProductBag extends Component {
     this.installments;
     
     this.getBag = getBag.bind(this);
-    this.bag = this.getBag();
   }
   
   buyProducts(){
     localStorage.removeItem(this.props.bagKey);
     localStorage.removeItem('bagKey');
+    this.setState({updateBag:true});
     alert("Sua compra foi efetuada com sucesso!");
   }
 
@@ -31,7 +31,6 @@ class ProductBag extends Component {
 
   getInstallmentFormated(){
     let arrInstallments = this.bag.itens.map(a => a.installments);
-    console.log(arrInstallments);
     let number = Math.min.apply(Math, arrInstallments);
     this.installments = {
       number: number,
@@ -47,6 +46,8 @@ class ProductBag extends Component {
   }
 
   render() {
+    this.bag = this.getBag();
+    
     return (
       <div className="productBag">
         <div className="title">
@@ -55,7 +56,7 @@ class ProductBag extends Component {
           <div className="productCount"><span>{this.bag.itens.length}</span></div>
         </div>
 
-        {this.bag.itens.map(element => <BagItem content={element} />)} 
+        {this.bag.itens.map(element => <BagItem father={this} content={element} />)} 
 
         {this.bag.itens.length == 0 &&
           <div className="emptyBag">

@@ -18,18 +18,20 @@ export function getBag(){
     return JSON.parse(bag);
 }
 
-export function addToBag(product, size){
+export function addToBag(context, product, size){
     let bag = getBag();
     bag = addItem(bag, product, size);
   
     localStorage.setItem(bag.key, JSON.stringify(bag));
+    context.setState({updateBag:true});
 }
 
-export function removeFromBag(product){
+export function removeFromBag(context, product){
     let bag = getBag();
     bag = removeItem(bag, product);
-    console.log(bag);
+    
     localStorage.setItem(bag.key, JSON.stringify(bag));
+    context.setState({updateBag:true});
 }
 
 function generateBagKey(){

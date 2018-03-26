@@ -8,11 +8,12 @@ class BagItem extends Component {
     this.state = {selected: false};
     this.formatPrice = formatPrice.bind(this);
     this.content = this.formatPrice(this.props.content);
-    
+
     this.removeFromBag = removeFromBag.bind(this);
   }
 
   onMouseOver(){
+    // this.props.father.render();
     this.setState({selected: true})
   }
 
@@ -36,7 +37,7 @@ class BagItem extends Component {
   render() {
     return (
         <div className={"product" + (this.state.selected ? " strike" : '')}>
-        <div className="delete" onClick={()=>this.removeFromBag(this.content)} onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>X</div>
+        <div className="delete" onClick={()=>this.removeFromBag(this.props.father, this.content)} onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>X</div>
           <div className="pic">
             <img src="https://static.netshoes.com.br/produtos/camisa-corinthians-ii-1718-sn-torcedor-nike-masculina/26/D12-6982-026/D12-6982-026_detalhe1.jpg?resize=326:*"></img>
           </div>

@@ -37,7 +37,7 @@ class Product extends Component {
       <div className="product" onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>
         <div className={"addToBag" + (this.state.visible ? " visible" : '')}>
           <div className="sizeSelector">
-            {this.content.availableSizes.map((size) => <div className="size" onClick={()=>this.addToBag(this.content, size)}>{size}</div>)}
+            {this.content.availableSizes.map((size) => <div className="size" onClick={()=>this.addToBag(this.props.bag, this.content, size)}>{size}</div>)}
           </div>
         </div>
         <div className={"content" + (this.state.visible ? " focusOff" : '')}>
