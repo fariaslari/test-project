@@ -21,7 +21,7 @@ class ProductBag extends Component {
   getValueFormated(){
     let value = 0;
     this.bag.itens.forEach(element => {
-      value+=element.price;
+      value+=(element.price * element.quantity);
     });
     this.total = { 
       price: Math.floor(value),

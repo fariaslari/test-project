@@ -1,31 +1,42 @@
 {
-    "name": "test-project",
-    "description": "A React test project",
-    "version": "1.0.0",
-    "author": "Larissa Farias <farias_lari@hotmail.com>",
-    "scripts": {
-        "dev": "webpack -d --watch",
-        "start": "node index.js",
-        "build": "webpack -p",
-        "react-dev": "webpack -d --watch",
-        "server-dev": "nodemon index.js"
-    },
-    "dependencies": {
-        "babel-core": "^6.26.0",
-        "babel-loader": "^7.1.4",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-preset-react": "^6.24.1",
-        "body-parser": "^1.18.2",
-        "express": "^4.16.3",
-        "nodemon": "^1.17.2",
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0",
-        "react-router": "^4.2.0",
-        "react-router-dom": "^4.2.2",
-        "webpack": "^4.2.0"
-    },
-    "devDependencies": {
-        "copy-webpack-plugin": "^4.5.1",
-        "webpack-cli": "^2.0.13"
-    }
+  "name": "test-project",
+  "description": "A React test project",
+  "version": "1.0.0",
+  "author": "Larissa Farias <farias_lari@hotmail.com>",
+  "jest": {
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
+  },
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "start": "node index.js",
+    "build": "webpack -p",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "webpack": "^4.2.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "jest": "^22.4.3",
+    "jest-localstorage-mock": "^2.2.0",
+    "webpack-cli": "^2.0.13"
+  }
 }

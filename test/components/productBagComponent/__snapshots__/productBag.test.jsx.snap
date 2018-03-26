@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductBag should render correctly 1`] = `
+<div
+  className="productBag"
+>
+  <div
+    className="title"
+  >
+    <img
+      src="/assets/img/bag-icon.png"
+    />
+    <span>
+      sacola
+    </span>
+    <div
+      className="productCount"
+    >
+      <span>
+        0
+      </span>
+    </div>
+  </div>
+  <div
+    className="emptyBag"
+  >
+    Sua sacola está vazia
+  </div>
+</div>
+`;
