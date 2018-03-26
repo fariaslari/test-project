@@ -45,6 +45,10 @@ class ProductBag extends Component {
     return;
   }
 
+  shouldComponentUpdate(nextProps) {
+    return true;
+  }
+
   render() {
     this.bag = this.getBag();
     
@@ -55,8 +59,26 @@ class ProductBag extends Component {
           <span>sacola</span>
           <div className="productCount"><span>{this.bag.itens.length}</span></div>
         </div>
-
-        {this.bag.itens.map(element => <BagItem father={this} content={element} />)} 
+        
+        {this.bag.itens.map(element => <BagItem 
+            father={this} 
+            availableSizes={element.availableSizes} 
+            currencyFormat={element.currencyFormat} 
+            decimalPart={element.decimalPart} 
+            description={element.description} 
+            id={element.id} 
+            image={element.image} 
+            installments={element.installments} 
+            intPrice={element.intPrice} 
+            isFreeShipping={element.isFreeShipping} 
+            price={element.price} 
+            quantity={element.quantity} 
+            size={element.size} 
+            sku={element.sku} 
+            style={element.style} 
+            title={element.title} 
+          />
+        )} 
 
         {this.bag.itens.length == 0 &&
           <div className="emptyBag">

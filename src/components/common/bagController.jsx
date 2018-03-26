@@ -31,6 +31,7 @@ export function removeFromBag(context, product){
     bag = removeItem(bag, product);
     
     localStorage.setItem(bag.key, JSON.stringify(bag));
+    // context.render();
     context.setState({updateBag:true});
 }
 
@@ -61,6 +62,5 @@ function addItem(bag, product, size){
 
 function removeItem(bag, product){
     bag.itens = bag.itens.filter(item => !(item.id == product.id && item.size == product.size));
-    
     return bag;
 }

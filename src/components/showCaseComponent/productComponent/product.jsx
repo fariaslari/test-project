@@ -42,7 +42,7 @@ class Product extends Component {
         </div>
         <div className={"content" + (this.state.visible ? " focusOff" : '')}>
           <div className="productImg">
-            <img src="https://static.netshoes.com.br/produtos/camisa-corinthians-ii-1718-sn-torcedor-nike-masculina/26/D12-6982-026/D12-6982-026_detalhe1.jpg?resize=326:*" />
+            <img src={this.content.image} />
           </div>
 
           <div className="productDescp">

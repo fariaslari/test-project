@@ -5,15 +5,15 @@ import BagController, { removeFromBag } from './../../common/BagController';
 class BagItem extends Component {
   constructor(props){
     super(props)
+    
     this.state = {selected: false};
     this.formatPrice = formatPrice.bind(this);
-    this.content = this.formatPrice(this.props.content);
+    this.props = this.formatPrice(this.props);
 
     this.removeFromBag = removeFromBag.bind(this);
   }
 
   onMouseOver(){
-    // this.props.father.render();
     this.setState({selected: true})
   }
 
@@ -35,27 +35,28 @@ class BagItem extends Component {
   }
 
   render() {
+    
     return (
         <div className={"product" + (this.state.selected ? " strike" : '')}>
-        <div className="delete" onClick={()=>this.removeFromBag(this.props.father, this.content)} onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>X</div>
+        <div className="delete" onClick={()=>this.removeFromBag(this.props.father, this.props)} onMouseOut={this.onMouseOut.bind(this)} onMouseOver={this.onMouseOver.bind(this)}>X</div>
           <div className="pic">
-            <img src="https://static.netshoes.com.br/produtos/camisa-corinthians-ii-1718-sn-torcedor-nike-masculina/26/D12-6982-026/D12-6982-026_detalhe1.jpg?resize=326:*"></img>
+            <img src={this.props.image}></img>
           </div>
           <div className="descp">
             <span className="name">
-              {this.content.title}
+              {this.props.title}
             </span>
             <div className="info">
               <span className="line">
-              {this.content.size} {this.content.style != "" ? " | "+ this.content.style : ""}
+              {this.props.size} {this.props.style != "" ? " | "+ this.props.style : ""}
               </span>
               <span className="line">
-                Quantidade: {this.content.quantity}
+                Quantidade: {this.props.quantity}
               </span>
             </div>
           </div>
           <div className="price">
-          {this.content.currencyFormat} <b>{this.content.intPrice}</b>,{this.content.decimalPart}
+          {this.props.currencyFormat} <b>{this.props.intPrice}</b>,{this.props.decimalPart}
           </div>
         </div>
     )
